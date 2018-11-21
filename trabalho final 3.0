@@ -1,0 +1,225 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define N 5
+void bubble_sort (int vetor[], int n) {
+    int k, j, aux;
+     for (k = 0; k < n; k++) {
+         for (j = 0; j < n - 1; j++) {
+             if (vetor[j] > vetor[j + 1]) {
+                aux          = vetor[j];
+                vetor[j]     = vetor[j + 1];
+                vetor[j + 1] = aux;
+            }
+        }
+    }
+}
+void bubble_invertido (int vetor[], int n) {
+    int k, j, aux;
+     for (k = 1; k < n; k++) {
+         for (j = 0; j < n - 1; j++) {
+             if (vetor[j] < vetor[j + 1]) {
+                aux          = vetor[j];
+                vetor[j]     = vetor[j + 1];
+                vetor[j + 1] = aux;
+            }
+        }
+    }
+}
+void insertionSort(int v[], int n) {
+   int i, chave, j;
+   for (i = 1; i < n; i++)
+   {
+       chave = v[i];
+       j = i-1;
+       while (j >= 0 && v[j] > chave)
+       {
+           v[j+1] = v[j];
+           j = j-1;
+       }
+       v[j+1] = chave;
+   }
+}
+void insertionSort_invertido(int v[], int n) {
+   int i, chave, j;
+   for (i = 1; i < n; i++)
+   {
+       chave = v[i];
+       j = i-1;
+       while (j >= 0 && v[j] < chave)
+       {
+           v[j+1] = v[j];
+           j = j-1;
+       }
+       v[j+1] = chave;
+   }
+}
+void selection_sort (int ve[],int max) {
+   int i, j, min, aux;
+   for (i = 0; i < (max - 1); i++) {
+    min = i;
+    for (j = i+1; j < max; j++) {
+      if (ve[j] < ve[min]) {
+            min = j;
+      }
+    }
+    if (i != min) {
+      aux = ve[i];
+      ve[i] = ve[min];
+      ve[min] = aux;
+    }
+  }
+  for (i = 0; i < max; i++) {
+    printf ("%d ",ve[i]);
+  }
+  printf ("\n");
+}
+void selection_sort_invertido (int ve[],int max) {
+   int i, j, min, aux;
+   for (i = 0; i < (max - 1); i++) {
+    min = i;
+    for (j = i+1; j < max; j++) {
+      if (ve[j] < ve[min]) {
+   min = j;
+      }
+    }
+    if (i != min) {
+      aux = ve[min];
+      ve[min] = ve[min];
+      ve[i] = aux;
+    }
+  }
+  for (i = 0; i < max; i++) {
+  }
+}
+int buscador (int ve[],int n,int procurador){
+int i;
+scanf("%d",&procurador);
+for (i=0;i<n;i++){
+    if (procurador== ve[i]){
+       return i;
+    }
+    else {
+        return -1;
+    }
+ }
+}
+void insertionSort_ponteiros(int v[], int n) {
+   int i, chave, j;
+   for (i = 1; i < n; i++)
+   {
+       chave = v[i];
+       j = i-1;
+       while (j >= 0 && v[j] > chave)
+       {
+           *(v+j+1) = v[j];
+           j = j-1;
+       }
+       v[j+1] = chave;
+   }
+}
+void bubble_Ponteiros (int vetor[], int n) {
+    int k, j, aux;
+     for (k = 1; k < n; k++) {
+         for (j = 0; j < n - 1; j++) {
+             if (vetor[j] > *(vetor + j + 1)) {
+                aux = vetor[j];
+                vetor[j]     = vetor[j + 1];
+                vetor[j + 1] = aux;
+            }
+        }
+    }
+}
+void selection_sort_ponteiros (int ve[],int max) {
+
+   int i, j, min, aux;
+   for (i = 0; i < (max - 1); i++) {
+    min = i;
+    for (j = i+1; j < max; j++) {
+      if (ve[j] < ve[min]) {
+            min = j;
+      }
+    }
+    if (i != min) {
+      aux = ve[i];
+      ve[i] = ve[min];
+      ve[min] = aux;
+    }
+  }
+  for (i = 0; i < max; i++) {
+    printf ("%d ",ve[i]);
+  }
+  printf ("\n");
+}
+void printador(int ve[],int n){
+    int i;
+    for (i=0;i<n;i++){
+        printf("%d\n",ve[i]);
+    }
+}
+int main(){
+    int vet[N],i,op,procurador;
+    for (i=0;i<N;i++){
+    scanf("%d",&vet[i]);
+    }
+    printf("\nEscolha seu metodo de ordenação do vetor");
+    printf("\n1-Bubble Sort");
+    printf("\n2-Bubble Sort decrescente");
+    printf("\n3-Bubble Ponteiros");
+    printf("\n4-InserctionSort");
+    printf("\n5-InserctionSort decrescente");
+    printf("\n6-InserctionSort ponteiros");
+    printf("\n7-SelectionSort");
+    printf("\n8-SelectionSort decrescente");
+    printf("\n9-SelectionSort ponteiros");
+    printf("\n10-Buscador");
+    printf("\n0-Termina o Sistema");
+    while (op!=0){
+    scanf("%d",&op);
+    switch(op){
+    scanf("%d",&op);
+        case 1:
+            bubble_sort(vet,N);
+            printador(vet,N);
+            break;
+        case 2:
+            bubble_invertido(vet,N);
+                 printador(vet,N);
+
+            break;
+        case 3:
+            bubble_Ponteiros(vet,N);
+            printador(vet,N);
+            break;
+        case 4:
+            insertionSort(vet,N);
+             printador(vet,N);
+            break;
+        case 5:
+            insertionSort_invertido(vet,N);
+             printador(vet,N);
+            break;
+        case 6:
+            insertionSort_ponteiros(vet,N);
+            printador(vet,N);
+            break;
+        case 7:
+            selection_sort(vet,N);
+            printador(vet,N);
+            break;
+        case 8:
+            selection_sort_invertido(vet,N);
+            printador(vet,N);
+            break;
+        case 9:
+            selection_sort_ponteiros(vet,N);
+            printador(vet,N);
+            break;
+        case 10:
+            printf("%d\n",buscador(vet,N,procurador));
+        default:
+            printf("Nenhum comando escolhido");
+    }
+   }
+}
+//lembrar, o 7 e o 9 estão printando vetor completo e o 10 n acha printa -1
