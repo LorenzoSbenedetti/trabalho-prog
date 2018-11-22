@@ -1,0 +1,18 @@
+int BuscaBinaria(int[] v, int inicio, int fim, int valor) {
+    int meio;
+    meio=(inicio+fim)/2;
+    if(meio>valor)
+    {
+        return BuscaBinaria(v, inicio, meio-1, valor);
+    }
+    if(meio<valor)
+    {
+        return BuscaBinaria(v, inicio+1, meio, valor);
+    }
+    if(meio==valor)
+    {
+        return meio;
+    }
+    else {
+    return -1;
+    }
